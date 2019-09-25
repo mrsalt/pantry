@@ -4,13 +4,35 @@
 <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
-
-<div class="nav-bar"></div>
-
 <div id="app">
-  
-  <div class="product">
-        
+  <div class="command-bar">
+    <button v-for="m in modes"
+            :class="{ selected: m == activeMode }"
+            @click="switchMode(m)"
+            >{{ m }}</button>
+  </div>
+
+  <div id="add-inventory"
+       class="command-bar"
+       v-if="activeMode == 'Add'">
+
+    <div id="location">
+      <button v-for="l in locations"
+            :class="{ selected: l == selectedLocation }"
+            @click="switchLocation(l)"
+            >{{ l.name }}</button>
+      <button class="new" @click="clickNewLocation()">New Location...</button>
+    </div>
+    <div v-if="creatingNewLocation">
+      <row>
+        <label>Location Name:</label>
+        <input type="text" id="new-location-name" style="width: 30%"></input>
+        <button @click="clickAddNewLocation()">Add Location</button>
+      </row>
+    </div>
+  </div>
+</div>
+  <!--
     <div class="product-image">
       <img :src="image" />
     </div>
@@ -47,8 +69,8 @@
       </div> 
     
   </div>
-    
 </div> 
+-->
 
  <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>-->
  <script src="opensource/vue.js"></script>
