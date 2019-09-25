@@ -10,6 +10,7 @@ The Pantry will keep a record of food stored in the pantry.  Whenever food is pu
 
 ### Product Page:
 * Name
+* UPC_Code
 * Image
 * Shelf Life
 * Size Options...
